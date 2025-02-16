@@ -1,4 +1,6 @@
 import re
+import numpy as np
+import math
 
 class Person:
     def __init__(self, name, difficulty):
@@ -7,14 +9,15 @@ class Person:
         else:
             raise ValueError("Invalid name: Name must be alphabetical character between 1 and 19 length")
         self.cash = self.set_cash(difficulty)
-        self.liabilities = 0
+        self.liabilities = self.set_liabilities(difficulty)
+        self.col = self.set_col(difficulty)
         self.contacts = []
         self.skills = []
     
 
 
     def display_info(self):
-        print(f"Name: {self.name}, Cash: {self.cash}, Liabilities: {self.liabilities}, Contacts: {self.contacts}, Skills: {self.skills}")
+        print(f"Name: {self.name}, Cash: {self.cash}, Liabilities: {self.liabilities}, Cost of Living: {self.col}, Contacts: {self.contacts}, Skills: {self.skills}")
 
     def is_valid_name(self, name):
         if re.match("^[A-Za-z]{1,19}$", name):
@@ -25,13 +28,19 @@ class Person:
         print("validate the difficulty level")
     
     def set_cash(self, difficulty):
-        print("get a normal distribution library working here")
+        val = (10 - difficulty + 1) * 25000
+        cash = math.ceil(np.random.normal(val, val/3, 1))
+        return cash
     
     def set_liabilities(self, difficulty):
-        print("get a normal distribution library working here")
+        val = (difficulty) * 25000
+        liab = math.ceil(np.random.normal(val, val/3, 1))
+        return liab
 
-    def set_periodic_costs(self, difficulty):
-        print("set periodic recurring costs")
+    def set_col(self, difficulty):
+        val = (difficulty) * 1000
+        col = math.ceil(np.random.normal(val, val/3, 1))
+        return col
     
     def set_periodic_income(self, difficulty):
         print("this will likely be through variety of different asset classes")
