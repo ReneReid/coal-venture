@@ -1,4 +1,5 @@
 from game_start import *
+from project.classes.game_start import *
 
 def display_menu():
     print("Welcome to the Text-Based RPG Menu")
@@ -13,7 +14,9 @@ def main():
         choice = input("Enter your choice (1-4): ")
 
         if choice == '1':
-            start_game()
+            #start_game()
+            game = Game()
+            game.start_game()
             # Code to start a new game goes here
         elif choice == '2':
             print("Loading game...")
