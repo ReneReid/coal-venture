@@ -1,3 +1,5 @@
+# TODO: these are actions pertaining to the business or person class...
+
 def display_options():
     print("1: Borrow from bank")
     print("2: Borrow from contacts")

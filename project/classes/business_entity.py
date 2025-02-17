@@ -1,0 +1,1 @@
+# TODO: business entity class should inherit from Person class

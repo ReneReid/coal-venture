@@ -1,5 +1,5 @@
 from game_start import *
-from project.classes.game_start import *
+from project.classes.game import *
 
 def display_menu():
     print("Welcome to the Text-Based RPG Menu")

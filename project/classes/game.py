@@ -1,4 +1,4 @@
-from classes.person import *
+from project.classes.player import *
 from borrowing import *
 
 class Game:
@@ -30,7 +30,7 @@ class Game:
     def player_setup(self, difficulty):
         name = input("please input your player name: ")
         try:
-            player = Person(name, difficulty)
+            player = Player(name, difficulty)
             player.display_info()
             return player
         except ValueError as e:
@@ -41,16 +41,19 @@ class Game:
         print("this may be deleted/ subsumed into the game running bit, prior to while loop")
     
 
+# TODO: consolidate these options into major categories which break out in to subcategories 
     def display_options(self):
         print("1: Borrow money")
         print("1a: Raise capital")
         # print("1b: Shareholder meeting")
         print("2: Purchase")
         print("2a: Display balance sheet")
+        print("2b: Apply for license")
         print("3: Sell")
         print("4: Socialize")
         print("4a: Meet with contact")
         print("5: Seek advice")
+        print("5a: Gain skill")
         print("6: Go to court")
         print("7: Commit crime")
         print("8: Next turn")
@@ -62,7 +65,7 @@ class Game:
         while True:
             self.display_options()
             choice = input("Enter your choice (1-10): ")
-            if moves == 2 or choice == '10':
+            if moves == self.player.num_moves_per_turn or choice == '10':
                 self.turn +=1
                 self.update_player()
                 moves = 0
